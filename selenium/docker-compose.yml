@@ -1,0 +1,19 @@
+version: "2.4"
+services:
+  chrome:
+   image: selenium/standalone-chrome
+   container_name: selenium-hub
+   cpus: "2"
+   mem_limit: 2048m
+   mem_reservation: 512m
+   ports:
+    - "172.17.0.1:4444:4444"
+   volumes:
+     - /dev/shm:/dev/shm
+###cgroup lxc limit corrected mem cpus
+     - /var/lib/lxcfs/proc/meminfo:/proc/meminfo
+     - /var/lib/lxcfs/proc/uptime:/proc/uptime
+     - /var/lib/lxcfs/proc/swaps:/proc/swaps
+     - /var/lib/lxcfs/proc/cpuinfo:/proc/cpuinfo
+     - /var/lib/lxcfs/proc/stat:/proc/stat
+     - /var/lib/lxcfs/proc/diskstats:/proc/diskstats
